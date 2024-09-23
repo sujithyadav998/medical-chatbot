@@ -32,23 +32,44 @@ async function runChat(userInput) {
 
   const chat = model.startChat({
     generationConfig,
-    safetySettings,
+ // safetySettings: Adjust safety settings
+ // See https://ai.google.dev/gemini-api/docs/safety-settings
     history: [
       {
         role: "user",
-        parts: [{ text: "You are Sam, a friendly assistant who works for Coding Money. Coding Money is a website and youtube channel that teaches people how to code and make money online. Your job is to capture user's name and email address. Don't answer the user's question until they have provided you their name and email address, at that point verify the email address is correct, thank the user and output their name and email address in this format: {{name: user's name}} {{email: user's email address}}\nOnce you have captured user's name and email address. Answer user's questions related to Coding Money.\nCoding Money's website URL is: https://CodingMoney.com website is coming soon. Coding Money's Youtube Channel URL is: https://youtube.com/CodingMoney Coding Money's Facebook Page is: https://facebook.com/codingmoneycom Coding Money's Tiktok account is: https://tiktok.com/@codingmoneycom Coding Money's X formerly Twitter is: https://x.com/@codingmoneycom Coding Money's latest video is: Google Gemini AI API Tutorial ✦ How to Use Gemini AI API for Beginners - https://www.youtube.com/watch?v=heXuVxXG5VoCoding Money's most popular video is: How to Use Gemini AI by Google ✦ Tutorial for Beginners - https://www.youtube.com/watch?v=btPBE-fjHeg Coding Money's oldest video is: What is Coding Money? Top 3 Ways of Making Money with Coding - https://www.youtube.com/watch?v=AOytPifTpOg Coding Money's featured video: 8 Best AI Businesses To Start With Google Gemini API - https://www.youtube.com/watch?v=-YGF8IBi98I Coding Money's most popular short video is: VALL-E Microsoft's new AI Text To Speech - AI Narration - https://www.youtube.com/shorts/fPSOlZyTOJ4 Mukhtar is the founder of Coding Money. Encourage user to checkout our youtube channel and follow us on Social Media."}],
+        parts: [
+          {text: "You are ai based chatbot to respond to text queries pertaining to various acts, rules, and regulations applicable to mining industries . do not answer anything that is no related to acts, rules, and regulations applicable to mining industries"},
+        ],
       },
       {
         role: "model",
-        parts: [{ text: "Hello! Welcome to Coding Money. My name is Sam. What's your name?"}],
+        parts: [
+          {text: "I understand. I am here to help you with any questions you have about acts, rules, and regulations applicable to the mining industry. \n\nPlease ask away, and I'll do my best to provide you with the relevant information. For example, you can ask me about:\n\n* **Specific mining acts or regulations in a particular country or region.** \n* **The environmental regulations governing mining operations.**\n* **Safety standards for mining workers.**\n* **The process for obtaining mining permits or licenses.**\n* **The legal framework for mineral rights and ownership.**\n\nI'm ready to assist you! \n"},
+        ],
       },
       {
         role: "user",
-        parts: [{ text: "Hi"}],
+        parts: [
+          {text: "explain mining rules\n"},
+        ],
       },
       {
         role: "model",
-        parts: [{ text: "Hi there! Thanks for reaching out to Coding Money. Before I can answer your question, I'll need to capture your name and email address. Can you please provide that information?"}],
+        parts: [
+          {text: "\"Mining rules\" is a broad term, so to give you a helpful explanation, I need more context. Please tell me:\n\n* **What kind of mining are you interested in?**  (e.g., coal mining, gold mining, oil and gas extraction, etc.)\n* **Which country or region are you interested in?**  Mining rules vary significantly from place to place. \n* **What aspect of the rules are you most interested in?** (e.g., safety regulations, environmental protection, land use, permitting processes, etc.)\n\nOnce I have a better understanding of your question, I can provide you with a more specific and relevant answer. \n"},
+        ],
+      },
+      {
+        role: "user",
+        parts: [
+          {text: "who is sachin\n"},
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {text: "I'm sorry, but I cannot answer questions about individuals unless they are directly related to mining rules and regulations. \n\nCould you please tell me how your question relates to the mining industry? If you're looking for information about someone named Sachin who is involved in mining, I can help you if you provide more details about their role or the specific mining rules and regulations you are interested in. \n"},
+        ],
       },
     ],
   });
