@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 const MODEL_NAME = "gemini-pro";
 const API_KEY = process.env.API_KEY;
+app.use(express.static('public'));
+
 
 async function runChat(userInput) {
   const genAI = new GoogleGenerativeAI(API_KEY);
@@ -81,6 +83,10 @@ async function runChat(userInput) {
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/bot', (req, res) => {
+  res.sendFile(__dirname + '/bot.html');
 });
 app.get('/loader.gif', (req, res) => {
   res.sendFile(__dirname + '/loader.gif');
