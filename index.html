@@ -1,259 +1,237 @@
-
-<!doctype HTML>
-<html>
-	<head>
-		<title></title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- <link rel="stylesheet" href="templates\styles.css" /> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medibot - Your AI Health Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      body {
-	
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-	line-height: 1.6;
-	font-size: 18px;
-    background-color: #f6f9fc;
-}
-body {
-    overflow-x: hidden;
-  }
-ul.navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    /* background-color: #333; */
-    text-align: right;
-    margin-left: 75vw;
-    color : #2e475d ;
-    height : 10vh  ; 
-    margin-top : 3px ; 
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  li.nav-item {
-    display: inline-block;
-   
-  }
+        body {
+            background-color: #f8fafc;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
 
-  li.nav-item a {
-    display: block;
-    /* color: white; */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
 
- 
-#logo
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-{
-    height:10vh ; 
-    width:10vw ; 
- margin-left : 20px ; 
- margin-top:20px ; 
- font-family: Georgia, 'Times New Roman', Times, serif;
- color:#2e475d ; 
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
 
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-header {
-    background : #ffffff;
-}
-#container
-{
-    background-color: aqua;
-    height:90vh ; 
-    background-color: #fef4ea;
-    display: flex;
-    flex-direction:row ;
-    width: 100vw;
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-}
-#intro
-{
-    width: 45vw ; 
-    margin-left: 15vw;
-    margin-top: 20vh;
-}
-#title
-{
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 2.25rem ; 
-    font-weight: 500 ; 
-    line-height: 1.28;
-    color:#2e475d ; 
+        .nav-links a:hover {
+            color: #2563eb;
+        }
 
-}
-#subtitle{
-    color: #2e475d;
-    font-family: Garamond ; 
-    font-size: 16px;
-    margin: 16px 0px;
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-    
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
 
-}
-#trybtn{
-    background-color: #FF5C35;
-    width: 20vw;
-    height: 10vh ;
-    color: #FFFFFF; 
-    font-family: Garamond ; 
+        .hero-text {
+            max-width: 800px;
+        }
 
-}
+        .hero-text h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+        }
 
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
 
-.listelements
-{
-    list-style: none;
-}
+        .cta-button {
+            background: linear-gradient(45deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
 
-header{
-    display:flex ; 
-    flex-direction:row;
-    justify-content: space-between;
-    width:100vw ; 
-    height:10vh ; 
-}
-#b
-{
-    margin-left: auto ;
-    margin-right:10px;
-    display : flex ; 
-    flex-direction: row;
-    justify-content: space-between; 
-    width: 10vw;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
 
-}
-#About
-{
-   margin-right: 10px;
-}
-
-/* what section */
-#what{
-    color:#2e475d;
-    font-family:Georgia, 'Times New Roman', Times, serif ; 
-    font-size: 30px;
-    
-}
-
-#answer
-{
-    color:#2e475d;
-    font-family:Garamond; 
-    font-size: 20px;
-    
-    /* text-align: center; */
-}
-
-#info
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    margin-left: 10vw;
-    margin-right: 10vw;
-}
-
-/* con section */
-
-#con
-{
-    /* display: flex;
-    flex-wrap: wrap;
-      justify-content: space-between; */
-
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap:5px ; 
-   
-    width:90vw;
-    margin-top: 10px;
-    margin-left: 5vw ;
-    margin-right:5vw;
-}
-.ftr
-{
-    background-color: #eaf2f5;
-    height: 55vh;
-    width:27vw ; 
-    border:1px ;
-    border-color: rgb(196, 166, 166);
-    padding : 10px; 
-    border-radius: 13px;
-}
-
-.ftr:hover 
-{
-   background-color: #d3dce6;
-   cursor: pointer;
-}
-
-.pft
-{
-    list-style: none;
-}
-
-.ftr h2{
-    color: #285c4f;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-}
-
-.ftr h3{
-    color: #2e210c;
-    font-family: garamond;
-    padding: 0px 0px 24px;
-}
-.featurebtn
-{
-    background-color: #FF5C35;
-    width: 18vw;
-    height: 7vh ;
-    color: #FFFFFF; 
-    font-family: Garamond ; 
-    margin-left:45px ; 
-  }
-
-
-    </style>
-	</head>
-	<body>
-		
-         <header>
-            
-          <ul class="navbar">
-    <li class="nav-item"><a href="#">Home</a></li>
-    <li class="nav-item"><a href="#">Features</a></li>
-    <li class="nav-item"><a href="#">Contact</a></li>
-  </ul>
-          
-          </header>
-
-          <div id = "container"> 
-
-                 <div id = "intro">
-                 <h1 id = "title"> Introducing MINEWISE </h1>
-                <h2 id  = "subtitle">Minewise is a generative AI-based chatbot designed to assist the mining industry by providing quick, accurate responses to text queries related to various acts, rules, and regulations. It streamlines compliance and legal inquiries, ensuring that professionals in the mining sector can access up-to-date regulatory information efficiently.  </h2>
-                <button onclick = "window.location.href = '/bot' " id = "trybtn"> <b> Try Minewise</b> </button>
-                 </div>
-          </div> 
-
-         
-
-         
-
-          
-
-           
-            
-          
        
 
-           <!-- <script src="scriptweather.js"></script> -->
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: white;
+        }
 
-	</body>
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+        }
+
+        .feature-card p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Medibot</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="/bot">Chat</a>
+                <a href="/find-doctor">FindDoctor</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Personal AI Health Assistant</h1>
+                <p>Experience the future of healthcare with Medibot. Get instant medical advice, symptom analysis, and reliable health information powered by advanced AI technology.</p>
+                <button class="cta-button" onclick="window.location.href='/bot'">Try Medibot Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Smart Symptom Analysis</h3>
+                <p>Advanced AI algorithms analyze your symptoms to provide accurate preliminary assessments and guidance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧬</div>
+                <h3>Disease Information</h3>
+                <p>Access comprehensive information about various medical conditions, treatments, and preventive measures.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>24/7 Medical Support</h3>
+                <p>Get instant responses to your health-related questions anytime, anywhere with our AI-powered chatbot.</p>
+            </div>
+        </div>
+    </section>
+</body>
 </html>

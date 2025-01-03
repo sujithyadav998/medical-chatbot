@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Doctor - Medibot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1a1a1a;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .search-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .search-section h2 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            outline: none;
+        }
+
+        select:focus {
+            border-color: #2563eb;
+        }
+
+        .doctor-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .doctor-card.visible {
+            display: block;
+        }
+
+        .doctor-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .doctor-details {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .specialty {
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Medibot</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/bot">Chat</a>
+                <a href="/find-doctor">FindDoctor</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="search-section">
+            <h2>Find a Doctor</h2>
+            <select id="diseaseSelect">
+                <option value="">Select a specialty</option>
+            </select>
+        </div>
+        <div id="doctorList"></div>
+    </div>
+
+    <script>
+        // Fetch doctors data from JSON file
+        async function fetchDoctorData() {
+            try {
+                const response = await fetch('/doctors.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch doctor data');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error loading doctor data:', error);
+                return { diseases: [] };
+            }
+        }
+
+        // Initialize the page
+        async function initializePage() {
+            const doctorData = await fetchDoctorData();
+            const diseaseSelect = document.getElementById('diseaseSelect');
+
+            // Populate disease select
+            doctorData.diseases.forEach(disease => {
+                const option = document.createElement('option');
+                option.value = disease.name;
+                option.textContent = disease.name;
+                diseaseSelect.appendChild(option);
+            });
+
+            // Handle disease selection
+            diseaseSelect.addEventListener('change', (e) => {
+                const selectedDisease = e.target.value;
+                const doctorList = document.getElementById('doctorList');
+                doctorList.innerHTML = '';
+
+                if (selectedDisease) {
+                    const disease = doctorData.diseases.find(d => d.name === selectedDisease);
+                    if (disease) {
+                        disease.doctors.forEach(doctor => {
+                            const doctorCard = document.createElement('div');
+                            doctorCard.className = 'doctor-card visible';
+                            doctorCard.innerHTML = `
+                                <div class="doctor-name">${doctor.name}</div>
+                                <div class="specialty">${doctor.specialty}</div>
+                                <div class="doctor-details">
+                                    <p>${doctor.hospital}</p>
+                                    <p>Experience: ${doctor.experience}</p>
+                                    <p>Contact: ${doctor.contact}</p>
+                                </div>
+                            `;
+                            doctorList.appendChild(doctorCard);
+                        });
+                    }
+                }
+            });
+        }
+
+        // Start the application
+        initializePage();
+    </script>
+</body>
+</html> 

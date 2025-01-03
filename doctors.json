@@ -1,0 +1,194 @@
+{
+  "diseases": [
+    {
+      "name": "Cardiology",
+      "doctors": [
+        {
+          "name": "Dr. Rajesh Sharma",
+          "specialty": "Interventional Cardiology",
+          "hospital": "Heart Care Institute, Mumbai",
+          "experience": "15 years",
+          "contact": "+91-9876543210"
+        },
+        {
+          "name": "Dr. Priya Patel",
+          "specialty": "Cardiac Surgery",
+          "hospital": "Cardiac Center, Delhi",
+          "experience": "12 years",
+          "contact": "+91-9876543211"
+        }
+      ]
+    },
+    {
+      "name": "Neurology",
+      "doctors": [
+        {
+          "name": "Dr. Amit Verma",
+          "specialty": "Neurosurgery",
+          "hospital": "Brain & Spine Institute, Bangalore",
+          "experience": "18 years",
+          "contact": "+91-9876543212"
+        },
+        {
+          "name": "Dr. Sneha Reddy",
+          "specialty": "Clinical Neurology",
+          "hospital": "Neuro Care, Chennai",
+          "experience": "10 years",
+          "contact": "+91-9876543213"
+        }
+      ]
+    },
+    {
+      "name": "Orthopedics",
+      "doctors": [
+        {
+          "name": "Dr. Suresh Kumar",
+          "specialty": "Joint Replacement",
+          "hospital": "Bone & Joint Hospital, Pune",
+          "experience": "20 years",
+          "contact": "+91-9876543214"
+        },
+        {
+          "name": "Dr. Meena Iyer",
+          "specialty": "Spine Surgery",
+          "hospital": "Spine Care Center, Hyderabad",
+          "experience": "14 years",
+          "contact": "+91-9876543215"
+        }
+      ]
+    },
+    {
+      "name": "Dermatology",
+      "doctors": [
+        {
+          "name": "Dr. Anjali Shah",
+          "specialty": "Cosmetic Dermatology",
+          "hospital": "Skin Care Clinic, Mumbai",
+          "experience": "12 years",
+          "contact": "+91-9876543216"
+        },
+        {
+          "name": "Dr. Rahul Gupta",
+          "specialty": "Medical Dermatology",
+          "hospital": "Derma Solutions, Delhi",
+          "experience": "16 years",
+          "contact": "+91-9876543217"
+        }
+      ]
+    },
+    {
+      "name": "Pediatrics",
+      "doctors": [
+        {
+          "name": "Dr. Neha Singh",
+          "specialty": "General Pediatrics",
+          "hospital": "Children's Hospital, Bangalore",
+          "experience": "14 years",
+          "contact": "+91-9876543218"
+        },
+        {
+          "name": "Dr. Arun Kumar",
+          "specialty": "Pediatric Surgery",
+          "hospital": "Kids Care Center, Chennai",
+          "experience": "17 years",
+          "contact": "+91-9876543219"
+        }
+      ]
+    },
+    {
+      "name": "Ophthalmology",
+      "doctors": [
+        {
+          "name": "Dr. Sanjay Mehta",
+          "specialty": "Retina Specialist",
+          "hospital": "Eye Care Institute, Pune",
+          "experience": "19 years",
+          "contact": "+91-9876543220"
+        },
+        {
+          "name": "Dr. Priyanka Joshi",
+          "specialty": "Cornea Specialist",
+          "hospital": "Vision Care Center, Mumbai",
+          "experience": "13 years",
+          "contact": "+91-9876543221"
+        }
+      ]
+    },
+    {
+      "name": "ENT",
+      "doctors": [
+        {
+          "name": "Dr. Vikram Desai",
+          "specialty": "Otolaryngology",
+          "hospital": "ENT Specialty Hospital, Delhi",
+          "experience": "15 years",
+          "contact": "+91-9876543222"
+        },
+        {
+          "name": "Dr. Ritu Sharma",
+          "specialty": "Head and Neck Surgery",
+          "hospital": "ENT Care Center, Hyderabad",
+          "experience": "11 years",
+          "contact": "+91-9876543223"
+        }
+      ]
+    },
+    {
+      "name": "Psychiatry",
+      "doctors": [
+        {
+          "name": "Dr. Deepak Verma",
+          "specialty": "Clinical Psychiatry",
+          "hospital": "Mind Wellness Center, Bangalore",
+          "experience": "16 years",
+          "contact": "+91-9876543224"
+        },
+        {
+          "name": "Dr. Anita Desai",
+          "specialty": "Child Psychiatry",
+          "hospital": "Mental Health Institute, Mumbai",
+          "experience": "14 years",
+          "contact": "+91-9876543225"
+        }
+      ]
+    },
+    {
+      "name": "Gastroenterology",
+      "doctors": [
+        {
+          "name": "Dr. Rajiv Kapoor",
+          "specialty": "Digestive Diseases",
+          "hospital": "Gastro Care Hospital, Chennai",
+          "experience": "18 years",
+          "contact": "+91-9876543226"
+        },
+        {
+          "name": "Dr. Smita Patel",
+          "specialty": "Hepatology",
+          "hospital": "Liver Institute, Delhi",
+          "experience": "15 years",
+          "contact": "+91-9876543227"
+        }
+      ]
+    },
+    {
+      "name": "Endocrinology",
+      "doctors": [
+        {
+          "name": "Dr. Mahesh Kumar",
+          "specialty": "Diabetes Care",
+          "hospital": "Endocrine Center, Pune",
+          "experience": "17 years",
+          "contact": "+91-9876543228"
+        },
+        {
+          "name": "Dr. Shweta Agarwal",
+          "specialty": "Thyroid Specialist",
+          "hospital": "Hormone Care Institute, Hyderabad",
+          "experience": "13 years",
+          "contact": "+91-9876543229"
+        }
+      ]
+    }
+  ]
+} 
