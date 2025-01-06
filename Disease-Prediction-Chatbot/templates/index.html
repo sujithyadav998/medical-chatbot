@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Medical Chatbot</title>
+
+    <link rel="stylesheet" href="static/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            /* background: linear-gradient(135deg, #f6f9fc 0%, #e9f2f9 100%); */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f6f9fc;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+        }
+
+        .chat-bar-collapsible {
+            position: fixed;
+            bottom: 0;
+            right: 50px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            width: 350px;
+        }
+
+        .collapsible {
+            background-color: #2196F3;
+            color: white;
+            cursor: pointer;
+            padding: 18px 20px;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            border: none;
+            font-size: 16px;
+            border-radius: 10px 10px 0 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .collapsible:hover {
+            background-color: #1976D2;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #fff;
+        }
+
+        .full-chat-block {
+            width: 100%;
+            background: white;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .outer-container {
+            min-height: 500px;
+            bottom: 0%;
+            position: relative;
+        }
+
+        .chat-container {
+            max-height: 500px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            scroll-behavior: smooth;
+            hyphens: auto;
+        }
+
+        .chat-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: #2196F3;
+            border-radius: 10px;
+        }
+
+        #chatbox {
+            padding: 20px;
+        }
+
+        .botText {
+            color: #000;
+            font-family: Helvetica;
+            padding: 10px;
+            border-radius: 15px;
+            background: #E3F2FD;
+            margin: 5px;
+            width: fit-content;
+            max-width: 75%;
+        }
+
+        .botText span {
+            line-height: 1.5;
+        }
+
+        #userInput {
+            width: 100%;
+            border-top: 1px solid #E0E0E0;
+            padding: 15px;
+            background: #fff;
+        }
+
+        .input-box {
+            width: 100%;
+            border: 2px solid #E0E0E0;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-box:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        #chat-icon {
+            margin-right: 10px;
+        }
+
+        #chat-timestamp {
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .chat-bar-input-block {
+            display: flex;
+            float: left;
+            box-sizing: border-box;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            background-color: white;
+            border-radius: 0 0 10px 10px;
+            padding: 10px 0px;
+        }
+
+        #chat-bar-bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+        }
+
+        /* Medical theme additions */
+        .collapsible::before {
+            content: '\f0fa';
+            font-family: FontAwesome;
+            margin-right: 10px;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .botText {
+            position: relative;
+        }
+
+        .botText::before {
+            content: '\f0fa';
+            font-family: FontAwesome;
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2196F3;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Landing Page Description -->
+    <div class="landing-description">
+        <h1>Welcome to the Disease Prediction Chatbot</h1>
+        <p>
+            Our chatbot is designed to assist you in understanding potential health issues based on your symptoms.
+            Simply type your health-related questions, and our intelligent system will provide you with insights
+            and guidance. Your health is important to us, and we aim to provide you with accurate information
+            to help you make informed decisions.
+        </p>
+    </div>
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">Medical Assistant
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                            <p id="botStarterMessage2" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Type your health question here...">
+                                <p></p>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="static/scripts/chat.js"></script>
+
+    <style>
+        /* Additional styles for the landing description */
+        .landing-description {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .landing-description h1 {
+            color: #2196F3;
+        }
+
+        .landing-description p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</body>
+
+</html>
